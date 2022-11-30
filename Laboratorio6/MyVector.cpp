@@ -22,6 +22,8 @@ public:
 	{
 		copy(arg.elem, arg.elem+fisDim,elem);	
 	};
+
+	int size() { return logicDim;}
 	
 	~MyVector()
 	{
@@ -30,27 +32,47 @@ public:
 	
 	//friend MyVector& operator=(const MyVector& arg);
 	T& operator[](int n);
+	T operator[](int n) const;
 	void push_back(T val);
-	
+	T pop_back();
+
+
 private:
 	int logicDim;
 	int fisDim;
 	T* elem;
+	void reserve ();
 };
 
 template <typename T>
 T& MyVector<T>::operator[](int n){
-		return this->elem[n];
+	return this->elem[n];
 }
+
+template <typename T>
+T MyVector<T>::operator[](int n) const{
+	return this->elem[n];
+}
+
 
 template <typename T>
 void MyVector<T>::push_back(T val){
 	if(fisDim==logicDim){
-			T* c=new T[fisDim*2];
-			copy(elem, elem+logicDim,c);	
-			delete elem;
-			elem=c;
+		reserve();
 	}
 	elem[logicDim++]=val;
 }
 
+template <typename T>
+T MyVector<T>::pop_back(){
+	return elem[--logicDim];
+}
+
+template <typename T>
+void MyVector<T>::reserve (){
+	T* c=new T[fisDim*2];
+	copy(elem, elem+logicDim,c);	
+	delete elem;
+	fisDim*=2;
+	elem=c;
+}
