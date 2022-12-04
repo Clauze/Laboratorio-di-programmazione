@@ -28,9 +28,9 @@ public:
 		delete elem;
 	}
 	
-	//friend MyVector& operator=(const MyVector& arg);
 	T& operator[](int n);
 	void push_back(T val);
+	T& at (int n);
 	
 private:
 	int logicDim;
@@ -52,5 +52,13 @@ void MyVector<T>::push_back(T val){
 			elem=c;
 	}
 	elem[logicDim++]=val;
+}
+
+template <typename T>
+T& MyVector<T>::at (int n){
+	if(n>fisDim){
+		throw std::out_of_range("out of range");
+	}
+	return elem[n];
 }
 
