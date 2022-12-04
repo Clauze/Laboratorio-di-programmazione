@@ -1,5 +1,5 @@
 #include <iostream>
-#include "MyVector.cpp"
+#include "MyVector.h"
 
 using namespace std;
 
@@ -13,5 +13,6 @@ int main(void){
 	int n=10;
 	v.at(1)=n;
 	cout<<"\nposizione 1 uguale a "<<v[1]<<" ora";
+
 	return 1;
 }
