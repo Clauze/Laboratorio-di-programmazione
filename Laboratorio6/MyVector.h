@@ -1,7 +1,10 @@
+#ifndef MyVector_h
+#define MyVector_h
 #include <iostream>
 using namespace std;
 
-template <typename T> class MyVector{
+template <typename T> 
+class MyVector{
     private:
         int logicDim;
         int fisDim;
@@ -28,10 +31,22 @@ template <typename T> class MyVector{
         
         ~MyVector()
         {
-            delete elem;
+            delete[] elem;
         }
         
+        int getSize()const{ return logicDim;}
+
         T& operator[](int n);
+        T operator[](int n) const;
+        void reserve(int n);
+        T pop_back();
         void push_back(T val);
         T& at (int n);
+        template<typename R>
+        friend ostream& operator<<(ostream& os, const MyVector<R>& out);
+
 };
+
+#include "MyVector.hpp"
+
+#endif
