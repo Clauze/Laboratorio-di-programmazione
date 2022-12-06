@@ -19,7 +19,12 @@ int main(void){
 	v.push_back(16);
 	v.push_back(17);
 	v.push_back(18);
-	cout<<"\nstampo v dopo aver aggiunt 15,16,17,18"<<v;
+	cout<<"\nstampo v dopo aver aggiunto 15,16,17,18"<<v;
+
+	v.pop_back();
+	v.pop_back();
+	cout<<"\nstampo v dopo aver effettuato 2 pop"<<v;
+
 
 
 	return 0;
